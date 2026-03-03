@@ -1,7 +1,8 @@
 import { Request, response, Response } from "express";
 import { specialtyService } from "./specialty.service";
 import { catchAsync } from "../../shared/catchAsync";
-import { sendResponse } from "../../shared/sendResponse";
+import { sendResponse } from "../../shared/sendresponse";
+
 
 
 
@@ -9,11 +10,20 @@ import { sendResponse } from "../../shared/sendResponse";
 
  const specialtyController=catchAsync(
     async (req: Request, res: Response) => {
-        const result = await specialtyService.createSpecialty(req.body);
+                 console.log( req.body);
+                 console.log( req.file);
+
+         const payload= {
+            ...req.body,
+            icon:req.file?.path
+         }
+
+        const result = await specialtyService.createSpecialty(payload);
+
         sendResponse(res, {
             httpStatusCode: 200,
             success: true,
-            message: 'Specialties fetched successfully',
+            message: 'Specialty created successfully',
             data: result
         });
     }
