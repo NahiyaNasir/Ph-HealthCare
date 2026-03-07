@@ -1,10 +1,11 @@
 import status from "http-status";
 import { catchAsync } from "../../shared/catchAsync";
 
-import { doctorScheduleService } from "./doctrorSchedule.service";
+
 import { IQueryParams } from "../../interface/QueryBuilder.interface";
 import { Request, Response } from "express";
-import { sendResponse } from "../../shared/sendresponse";
+import { sendResponse } from "../../shared/sendResponse";
+import { doctorScheduleService } from "./doctorSchedule.service";
 
 
 const createMyDoctorSchedule = catchAsync(

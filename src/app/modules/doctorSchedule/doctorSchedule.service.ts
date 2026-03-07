@@ -4,7 +4,7 @@ import {
   IUpdateDoctorSchedulePayload,
 } from "./doctorschedule.interface";
 import { IQueryParams } from "../../interface/QueryBuilder.interface";
-import { QueryBuilder } from "../../utils/quaryBuilder";
+import { QueryBuilder } from "../../utils/queryBuilder";
 import { DoctorSchedules, Prisma } from "../../../generated/prisma/client";
 
 import {
@@ -120,7 +120,8 @@ const getDoctorScheduleById = async (doctorId: string, scheduleId: string) => {
   return doctorSchedule;
 };
 
-const updateMyDoctorSchedule = async (
+const updateMyDoctorSchedule
+ = async (
   user: any,
   payload: IUpdateDoctorSchedulePayload,
 ) => {

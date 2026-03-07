@@ -1,7 +1,7 @@
 import { Request, response, Response } from "express";
 import { specialtyService } from "./specialty.service";
 import { catchAsync } from "../../shared/catchAsync";
-import { sendResponse } from "../../shared/sendresponse";
+import { sendResponse } from "../../shared/sendResponse";
 
 
 

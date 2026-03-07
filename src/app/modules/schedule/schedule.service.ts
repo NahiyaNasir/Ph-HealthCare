@@ -2,15 +2,17 @@ import { addHours, addMinutes, format, interval } from "date-fns";
 import { ICreateSchedulePayload, IUpdateSchedulePayload } from "./schedule.interface";
 
 import { prisma } from "../../lib/prisma";
-import { convertDateTime } from "./schedule.utilitis";
+
 import { IQueryParams } from "../../interface/QueryBuilder.interface";
-import { QueryBuilder } from "../../utils/quaryBuilder";
+
 import { Prisma, Schedule } from "../../../generated/prisma/client";
 import {
   scheduleFilterableFields,
   scheduleIncludeConfig,
   scheduleSearchableFields,
 } from "./schedule.constant";
+import { convertDateTime } from "./schedule.utilities";
+import { QueryBuilder } from "../../utils/queryBuilder";
 
 const createSchedule = async (payload: ICreateSchedulePayload) => {
   const { startDate, endDate, startTime, endTime } = payload;

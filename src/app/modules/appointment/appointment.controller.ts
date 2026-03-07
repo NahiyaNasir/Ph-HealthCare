@@ -3,7 +3,7 @@ import { catchAsync } from "../../shared/catchAsync";
 
 import { Request, Response } from "express";
 import { appointmentService } from "./appointment.service";
-import { sendResponse } from "../../shared/sendresponse";
+import { sendResponse } from "../../shared/sendResponse";
 
 
 

@@ -1,7 +1,7 @@
 import status from "http-status";
 import { IQueryParams } from "../../interface/QueryBuilder.interface";
 import { catchAsync } from "../../shared/catchAsync";
-import { sendResponse } from "../../shared/sendresponse";
+import { sendResponse } from "../../shared/sendResponse";
 import { scheduleService } from "./schedule.service";
 
 const createSchedule = catchAsync(async (req, res) => {

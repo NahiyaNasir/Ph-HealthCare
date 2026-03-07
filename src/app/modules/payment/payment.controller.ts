@@ -5,7 +5,7 @@ import { catchAsync } from "../../shared/catchAsync";
 import { Request, Response } from "express";
 import { envVars } from "../../config/env";
 import Stripe from "stripe";
-import { sendResponse } from "../../shared/sendresponse";
+import { sendResponse } from "../../shared/sendResponse";
 
 const handleStripeWebhookEvent = catchAsync(async (req : Request, res : Response) => {
     const signature = req.headers['stripe-signature'] as string
