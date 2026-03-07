@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
 import { catchAsync } from "../../shared/catchAsync";
 import { userService } from "./user.service";
-import { sendResponse } from "../../shared/sendResponse";
+
 import status from "http-status";
+import { sendResponse } from "../../shared/sendresponse";
 
 
  const createDoctor=catchAsync(

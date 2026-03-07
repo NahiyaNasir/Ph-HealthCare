@@ -1,6 +1,4 @@
-import express, { Application, Request, Response } from "express";
-import { specialtyRoute } from "./app/modules/specialty/specialty.route";
-import { authRouter } from "./app/modules/Auth/auth.routes";
+import express, { Application, Request, Response } from "express";;
 import { notFound } from "./app/middleware/notFound";
 import { IndexRoutes } from "./app/routes";
 import cookieParser from "cookie-parser";
@@ -11,8 +9,11 @@ import path from "path";
 import { envVars } from "./app/config/env";
 import cors from "cors";
 import { globalErrorHandler } from "./app/middleware/globalError";
-
+import cron from "node-cron"
+import { appointmentService } from "./app/modules/appointment/appointment.service";
+import { PaymentController } from "./app/modules/payment/payment.controller";
 const app: Application = express();
+app.post("/webhook", express.raw({ type: "application/json" }),PaymentController.handleStripeWebhookEvent )
 app.use(cors({
     origin : [envVars.FRONTEND_URL, envVars.BETTER_AUTH_URL, "http://localhost:3000", "http://localhost:5000"],
     credentials : true,
@@ -30,6 +31,14 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
+cron.schedule("*/25 * * * *", async () => {
+    try {
+        console.log("Running cron job to cancel unpaid appointments...");
+        await appointmentService.cancelUnpaidAppointments();
+    } catch (error : any) {
+        console.error("Error occurred while canceling unpaid appointments:", error.message);    
+    }
+})
 
 app.use("/api/v1", IndexRoutes);
 
