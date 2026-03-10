@@ -21,3 +21,4 @@ router.get('/my-reviews', checkAuth(Role.PATIENT, Role.DOCTOR), ReviewController
 router.patch('/:id', checkAuth(Role.PATIENT), validateRequest(ReviewValidation.updateReviewZodSchema), ReviewController.updateReview);
 
 router.delete('/:id', checkAuth(Role.PATIENT), ReviewController.deleteReview);
+export const ReviewRoutes = router;
