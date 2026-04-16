@@ -6,7 +6,9 @@ import status from "http-status";
 
 const getDashboardStatsData = catchAsync(async (req: Request, res: Response) => {
     const user = req.user;
+    // console.log(user,"from stats");
     const result = await StatsService.getDashboardStats(user);
+    // console.log(result,"from stats");
 
     sendResponse(res, {
         httpStatusCode: status.OK,

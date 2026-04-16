@@ -7,16 +7,16 @@ const getDashboardStats = async (user: any) => {
   let statsData;
   switch (user.role) {
     case Role.SUPER_ADMIN:
-      statsData = getSuperAdminStatsData();
+      statsData = await   getSuperAdminStatsData();
       break;
     case Role.ADMIN:
-      statsData = getAdminStatsData();
+      statsData = await getAdminStatsData();
       break;
     case Role.DOCTOR:
-      statsData = getDoctorStatsData(user);
+      statsData = await getDoctorStatsData(user);
       break;
     case Role.PATIENT:
-      statsData = getPatientStatsData(user);
+      statsData = await getPatientStatsData(user);
       break;
     default:
       throw new AppError(status.BAD_REQUEST, "Invalid user role");

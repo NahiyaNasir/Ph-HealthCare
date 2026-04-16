@@ -8,11 +8,17 @@ import { auth } from "./app/lib/auth";
 import path from "path";
 import { envVars } from "./app/config/env";
 import cors from "cors";
+import qs from "qs";
 import { globalErrorHandler } from "./app/middleware/globalError";
 import cron from "node-cron"
 import { appointmentService } from "./app/modules/appointment/appointment.service";
 import { PaymentController } from "./app/modules/payment/payment.controller";
+
+(BigInt.prototype as any).toJSON = function () {
+  return this.toString();
+};
 const app: Application = express();
+app.set("query parser", (str : string) => qs.parse(str));
 app.post("/webhook", express.raw({ type: "application/json" }),PaymentController.handleStripeWebhookEvent )
 app.use(cors({
     origin : [envVars.FRONTEND_URL, envVars.BETTER_AUTH_URL, "http://localhost:3000", "http://localhost:5000"],

@@ -8,7 +8,7 @@ import { sendResponse } from "../../shared/sendResponse";
 
 
 
- const specialtyController=catchAsync(
+ const createSpecialty=catchAsync(
     async (req: Request, res: Response) => {
                  console.log( req.body);
                  console.log( req.file);
@@ -56,7 +56,7 @@ const deleteSpecialty = catchAsync(
 
  
   export const ControllerSpe={
-    specialtyController,
+    createSpecialty,
     getAllSpecialties,
     deleteSpecialty
   }

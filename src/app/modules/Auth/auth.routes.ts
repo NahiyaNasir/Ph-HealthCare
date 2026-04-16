@@ -17,5 +17,5 @@ import { Role } from "../../../generated/prisma/enums";
   router.get("/me",checkAuth(Role.ADMIN,Role.DOCTOR,Role.PATIENT,Role.SUPER_ADMIN),authController.getME)
 router.get("/login/google", authController.googleLogin);
 router.get("/google/success", authController.googleLoginSuccess);
-router.get("/oauth/error", authController.handleOAuthError);
+router.get("/auth/error", authController.handleOAuthError);
    export {router as authRouter}

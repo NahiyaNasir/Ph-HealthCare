@@ -4,15 +4,20 @@ import { Role } from "../../../generated/prisma/enums";
 import { validateRequest } from "../../middleware/validateRequest";
 import { updateDoctorZodSchema } from "./doctor.validation";
 
-const router= Router()
+const router = Router();
 
- router.post("/getAllDoctor",doctorController.getAllDoctor)
- router.post("/:doctorId",doctorController.getDoctorById)
- router.patch("/:id",
-  
-    validateRequest(updateDoctorZodSchema), doctorController.updateDoctor);
-router.delete("/:id",
+router.get("/", doctorController.getAllDoctor);
+router.get("/:id", doctorController.getDoctorById);
+router.patch(
+  "/:id",
 
-    doctorController.deleteDoctor);
+  validateRequest(updateDoctorZodSchema),
+  doctorController.updateDoctor,
+);
+router.delete(
+  "/:id",
 
- export{router as doctorRoute}
+  doctorController.deleteDoctor,
+);
+
+export { router as doctorRoute };

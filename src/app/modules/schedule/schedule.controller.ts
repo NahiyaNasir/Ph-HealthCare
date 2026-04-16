@@ -22,7 +22,8 @@ const  getAllSchedule=catchAsync(async (req, res) => {
         success: true,
         httpStatusCode: status.OK,
         message: 'Schedule retrieved successfully',
-        data:result
+        data:result,
+        meta:result.meta
     })
 });
 const  getScheduleById=catchAsync(async (req, res) => {

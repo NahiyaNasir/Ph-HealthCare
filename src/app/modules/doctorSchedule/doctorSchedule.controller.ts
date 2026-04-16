@@ -51,7 +51,7 @@ const getAllDoctorSchedules = catchAsync(async (req: Request, res: Response) => 
     httpStatusCode: status.CREATED,
     message: "Schedule retrieved successfully",
     data: result,
-    // meta: result.meta,
+    meta: result.meta,
   });
 });
 
