@@ -113,7 +113,7 @@ const getMyAppointments = async (user: any) => {
       email: user?.email,
     },
   });
-  const doctorData = await prisma.doctor.findUniqueOrThrow({
+  const doctorData = await prisma.doctor.findUnique({
     where: {
       email: user?.email,
     },
